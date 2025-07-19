@@ -1,0 +1,240 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 62.5%;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,35,1.25,5,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+    --step--3: clamp(0.65rem, calc(0.49rem + 0.82vw), 1.12rem);
+    --step--2: clamp(0.78rem, calc(0.57rem + 1.08vw), 1.40rem);
+    --step--1: clamp(0.94rem, calc(0.65rem + 1.41vw), 1.75rem);
+    --step-0: clamp(1.13rem, calc(0.76rem + 1.85vw), 2.19rem);
+    --step-1: clamp(1.35rem, calc(0.87rem + 2.41vw), 2.73rem);
+    --step-2: clamp(1.62rem, calc(0.99rem + 3.13vw), 3.42rem);
+    --step-3: clamp(1.94rem, calc(1.13rem + 4.05vw), 4.27rem);
+    --step-4: clamp(2.33rem, calc(1.29rem + 5.23vw), 5.34rem);
+    --step-5: clamp(2.80rem, calc(1.45rem + 6.74vw), 6.68rem);
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #0b0c11;
+    color: rgb(182, 182, 182);
+}
+
+/* La capa que crea el efecto de luz */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+      
+    /* Esto es CRÍTICO: permite hacer clic a través de la capa */
+    pointer-events: none; 
+
+    /* El gradiente que sigue al mouse usando variables CSS */
+    background: radial-gradient(
+    circle 30rem at var(--spotlight-x) var(--spotlight-y), rgba(56, 142, 212, 0.15),
+        transparent 80%
+    );
+}
+
+
+h1 {
+   font-family: "Revalia", sans-serif;
+   font-weight: 500;
+   font-size: var(--step-2); /* Hacemos el título responsive */
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: var(--step-1);
+    margin-top: 1rem;
+    font-weight: 400;
+
+}
+
+h3 {
+    font-size: var(--step-0);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(255, 255, 255);
+}
+
+p {
+    font-size: var(--step--2);
+    font-weight: 200;
+    line-height: 1.6;
+    color: rgb(224, 224, 224);
+    
+}
+
+
+
+.presentation{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+
+
+
+/* --- Layout 2 Columnas --- */
+.layout-wrapper {
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.main-header {
+    width: 45%; /* Columna izquierda ocupa el 45% */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    position: sticky; /* ¡CLAVE! Se queda fija al hacer scroll */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10vh 5vw;
+}
+
+.main-content {
+    width: 55%; /* Columna derecha ocupa el 55% */
+    padding: 10vh 5vw;
+}
+
+.main-content section {
+    margin-bottom: 20vh; /* Espacio entre secciones */
+    /* border: none; quita el borde que tenías para depurar */
+}
+
+
+
+
+
+/* --- Area NavBar --- */
+
+.main-nav{
+    margin-top: 20%;
+    height: max-content;
+}
+
+.main-nav ul {
+    list-style: none; /* Quitamos los puntos de la lista */
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.main-nav li {
+    margin-bottom: 1rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    font-weight: 300;
+    font-size: var(--step--3);
+    display: flex; /* Importante para las animaciones */
+    transition: all 0.3s ease;
+}
+
+
+/* --- Efecto Brackets NavBar --- */
+.main-nav a span {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Creamos los corchetes con pseudo-elementos */
+.main-nav a::before,
+.main-nav a::after {
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 800;
+    color: #ff6464;
+}
+
+.main-nav a::before {
+    content: '[';
+    transform: translateX(-10px); /* Empieza desplazado a la izquierda */
+}
+
+.main-nav a::after {
+    content: ']';
+    transform: translateX(10px); /* Empieza desplazado a la derecha */
+}
+
+/* En el hover, mostramos los corchetes y movemos el texto */
+.main-nav a:hover::before,
+.main-nav a:hover::after {
+    opacity: 1;
+    transform: translateX(1);
+}
+
+.main-nav a:hover span {
+    transform: translateX(8px); /* Movemos un poco el texto para que no se pegue */
+}
+
+
+/* PANEL 2 */
+
+#about span {
+    font-size: var(--step-1); /* Tamaño más grande */
+    font-weight: 600;
+    color: rgb(224, 224, 224);
+    letter-spacing: 0rem;
+}
+
+/*Estructura projects*/
+#containerId{
+background-color: #bebebe;
+display: flex;
+flex-direction: column;
+
+width: 100%;
+height: max-content;
+}
+
+.project-card{
+    width: 100%;
+    height: max-content;
+}
+
+.cont0{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: max-content;
+}
+
+.cont1{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
