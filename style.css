@@ -201,37 +201,120 @@ p {
     letter-spacing: 0rem;
 }
 
+
+
 /*Estructura projects*/
-#containerId{
-background-color: #bebebe;
-display: flex;
-flex-direction: column;
 
-width: 100%;
-height: max-content;
+
+
+/* Estilo general del contenedor de tarjetas */
+#containerId {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    border: solid red 2px;
 }
 
-.project-card{
-    width: 100%;
-    height: max-content;
-}
 
-.cont0{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
-    height: max-content;
-}
-
-.cont1{
+/* Tarjeta principal */
+.project-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease-in-out;
+    
+    border: solid rgb(187, 187, 187) 2px;
 }
 
+.project-card:hover {
+    transform: translateY(-5px);
+}
 
+/* Contenedor de bloques internos */
+.cont-card0 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
 
+/* Imagen */
+.image-card {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
 
+/* Título */
+.title-card {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+/* Texto */
+.cont-card2 p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Contenedor de tecnologías */
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.tech-list .item {
+    background-color: #f0f0f0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+/* Enlaces de GitHub y Web */
+.cont-card3 {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.github-icon, .url-icon {
+    text-decoration: none;
+    color: #007acc;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.github-icon:hover, .url-icon:hover {
+    color: #005a99;
+}
+
+/* Responsive ajustes extra */
+@media (max-width: 500px) {
+    .title-card {
+        font-size: 1.2rem;
+    }
+
+    .tech-list .item {
+        font-size: 0.75rem;
+    }
+
+    .cont-card2 p {
+        font-size: 0.95rem;
+    }
+}
 
 
 
