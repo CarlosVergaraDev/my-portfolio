@@ -1,5 +1,11 @@
 const body = document.body;
 
+
+
+
+
+
+
 // Escuchamos el evento 'mousemove' en todo el documento
 window.addEventListener('mousemove', (e) => {
 
@@ -125,22 +131,6 @@ class projects {
     };
 
 };
-
-const proyecto1 = new projects(
-    "img/proyecto1.png",
-    "proyecto1",
-    "Mi Proyecto 1",
-    "Descripción breve del proyecto 1.",
-    ["HTML", "CSS", "JavaScript"],
-    "https://github.com/usuario/proyecto1",
-    "https://miweb.com/proyecto1"
-);
-
-// Inicializaciones Projects
-
-
-proyecto1.render("contenedor-proyectos");
-
 
 
 
