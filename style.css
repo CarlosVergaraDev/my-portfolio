@@ -209,101 +209,81 @@ p {
 
 /*Estructura projects*/
 
-
-
-/* Estilo general del contenedor de tarjetas */
+/* Contenedor principal */
 #containerId {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
 
-    border: solid red 2px;
+/* Cada tarjeta */
+.card {
+  position: relative;
+  flex: 0 0 250px; /* ancho fijo */
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  font-family: sans-serif;
+}
+
+/* Imagen de fondo con gradiente */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+/* Texto (nombre arriba, descripción oculta al inicio) */
+.card-content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  display: none; /* se oculta hasta hover */
+}
+
+/* Hover: mostrar descripción */
+.card:hover p {
+  display: block;
+}
+
+/* Animación del carrusel */
+@keyframes scrollCards {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Aplicamos la animación */
+#containerId.animate {
+  animation: scrollCards 20s linear infinite;
 }
 
 
-/* Tarjeta principal */
-.project-card {
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease-in-out;
-    
-    border: solid rgb(187, 187, 187) 2px;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Contenedor de bloques internos */
-.cont-card0 {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-/* Imagen */
-.image-card {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-/* Título */
-.title-card {
-    font-size: 1.4rem;
-    color: #333;
-    margin: 0.5rem 0;
-}
-
-/* Texto */
-.cont-card2 p {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.5;
-}
-
-/* Contenedor de tecnologías */
-.tech-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 1rem;
-}
-
-.tech-list .item {
-    background-color: #f0f0f0;
-    padding: 0.4rem 0.8rem;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    color: #333;
-}
-
-/* Enlaces de GitHub y Web */
-.cont-card3 {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.github-icon, .url-icon {
-    text-decoration: none;
-    color: #007acc;
-    font-weight: bold;
-    transition: color 0.2s ease-in-out;
-}
-
-.github-icon:hover, .url-icon:hover {
-    color: #005a99;
-}
 
 /* Responsive ajustes extra */
 @media (max-width: 900px) {
