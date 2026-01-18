@@ -4,13 +4,11 @@
     box-sizing: border-box;
 }
 
-
 html {
     font-size: 62.5%;
     font-family: 'Outfit', sans-serif;
     scroll-behavior: smooth;
 }
-
 
 /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,35,1.25,5,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
@@ -26,15 +24,16 @@ html {
     --step-5: clamp(2.80rem, calc(1.45rem + 6.74vw), 6.68rem);
 }
 
-
 body{
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #0b0c11;
     color: rgb(182, 182, 182);
 }
+
+
 
 /* La capa que crea el efecto de luz */
 body::after {
@@ -55,19 +54,18 @@ body::after {
     );
 }
 
-
 h1 {
-   font-family: "Revalia", sans-serif;
+   font-family: "Space Grotesk", sans-serif;
    font-weight: 500;
    font-size: var(--step-2); /* Hacemos el título responsive */
 }
 
 h2 {
+    font-family: "Space Grotesk", sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-size: var(--step-1);
     margin-top: 1rem;
-    font-weight: 400;
-
+    font-weight: 500;
 }
 
 h3 {
@@ -79,17 +77,40 @@ h3 {
 }
 
 p {
+    font-family:  "Space Grotesk", sans-serif;
     font-size: var(--step--2);
     font-weight: 200;
-    line-height: 1.6;
+    line-height: 1.8;
     color: rgb(224, 224, 224);
     
 }
 
-
-.nav-mobile{
-    display: none;
+.nav-icons{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    justify-content: flex-start;
 }
+
+.nav-icons >svg{
+    color: rgb(255, 255, 255);
+    margin: auto 1.5rem;
+    cursor: pointer;
+}
+
+.nav-icons svg:hover{
+    fill:#ff6464
+}
+
+.nav-icons >svg:nth-child(2){
+    margin-right: 5%;
+}
+
+
+
 
 
 /* --- Layout 2 Columnas --- */
@@ -108,19 +129,6 @@ p {
     flex-direction: column;
     padding: 10vh 5vw;
 }
-
-.main-content {
-    width: 55%; /* Columna derecha ocupa el 55% */
-    padding: 10vh 5vw;
-}
-
-.main-content section {
-    margin-bottom: 20vh; /* Espacio entre secciones */
-    /* border: none; quita el borde que tenías para depurar */
-}
-
-
-
 
 .presentation{
     display: flex;
@@ -196,92 +204,466 @@ p {
 }
 
 
-/* PANEL 2 */
 
-#about span {
-    font-size: var(--step-1); /* Tamaño más grande */
-    font-weight: 600;
-    color: rgb(224, 224, 224);
-    letter-spacing: 0rem;
+
+.main-content{
+
+    display: flex;
+    flex-direction: column;
+    width: 55%; /* Columna derecha ocupa el 55% */
+    padding: 10vh 5vw;
+    row-gap: 1.5rem;
+
+}
+
+section {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.section-info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
 }
 
 
 
-/*Estructura projects*/
 
-/* Contenedor principal */
-#containerId {
-  display: flex;
-  gap: 20px;
-  overflow: hidden;
-  width: 100%;
-  position: relative;
+/* Skills */
+
+.skillCategory{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
 }
 
-/* Cada tarjeta */
-.card {
-  position: relative;
-  flex: 0 0 250px; /* ancho fijo */
-  height: 350px;
-  border-radius: 10px;
+.skillCategory__label{
+    font-family: 'Roboto Mono', monospace;
+    font-size: var(--step--3);
+    color: #a0a0a0;
+    font-weight: 400;
+    justify-self: flex-end;
+}
+
+.chipWrap{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chip{
+    padding: 0.4rem 0.8rem;
+    background-color: #1e1f26; /* Color de fondo oscuro */
+    color: #b6b6b6; /* Color del texto */
+    border-radius: 0.2rem;
+    font-size: var(--step--2);
+    font-weight: 300;
+}
+
+
+
+
+/* Projects */
+
+
+/* ===== Projects ===== */
+
+/* =========================
+   Grid responsive
+   ========================= */
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   Card base
+   ========================= */
+
+.projectCard {
+  position: relative; /* clave para posicionar la info absoluta */
+  background: #0d0f14;
+  border: 1px solid rgba(255,255,255,0.06);
   overflow: hidden;
   cursor: pointer;
-  color: white;
-  font-family: sans-serif;
 }
 
-/* Imagen de fondo con gradiente */
-.card img {
+/* =========================
+   Imagen
+   ========================= */
+
+.projectCardImage {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 20rem;
+  overflow: hidden;
 }
 
-.card::after {
-  content: "";
-  position: absolute;
+.projectCardImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: opacity 180ms ease;
+}
+
+/* =========================
+   Info box (papel en sobre)
+   ========================= */
+
+.projectCardInfo {
+  position: absolute;     /* fuera del flujo */
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 60%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  width: 100%;
+
+  height: 72px;           /* estado cerrado */
+  padding: 20px;
+  text-align: center;
+
+  background: #0d0f14;
+  overflow: hidden;       /* oculta lo que “sale” */
+
+  transition: height 220ms ease;
 }
 
-/* Texto (nombre arriba, descripción oculta al inicio) */
-.card-content {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
+/* =========================
+   Texto
+   ========================= */
+
+.projectCardTitle {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
 }
 
-.card h3 {
-  margin: 0;
+.projectCardYear {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* =========================
+   Hover effect
+   ========================= */
+
+.projectCard:hover .projectCardImage img {
+  opacity: 0.75;
+}
+
+/* Expansión hacia arriba SIN mover la tarjeta */
+.projectCard:hover .projectCardInfo {
+  height: 9rem;          /* estado expandido */
+}
+
+
+
+/* Contenedor del botón "ver más" */
+.projectsMoreWrap {
+
+  display: flex;
+  justify-content: center;
+}
+
+/* Botón "ver más"
+   Es el elemento clickeable que abre la modal con todos los proyectos */
+.projectsMoreBtn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 160ms ease;
 }
 
-.card p {
-  margin: 5px 0 0;
-  font-size: 0.9rem;
-  display: none; /* se oculta hasta hover */
+/* Estado hover del botón "ver más"
+   Indica interactividad al pasar el cursor */
+.projectsMoreBtn:hover {
+  opacity: 1;
 }
 
-/* Hover: mostrar descripción */
-.card:hover p {
-  display: block;
+
+
+
+
+/* Academy */
+
+/* =========================
+   ACADEMY HEADER
+   ========================= */
+
+.academyHeader {
+  position: relative;
+  margin-bottom: 24px;
 }
 
-/* Animación del carrusel */
-@keyframes scrollCards {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.academyTitle {
+  margin: 0 0 14px 0;
+  letter-spacing: 0.08em;
 }
 
-/* Aplicamos la animación */
-#containerId.animate {
-  animation: scrollCards 20s linear infinite;
+.academyDesc {
+  margin: 0;
+  max-width: 640px;
+  opacity: 0.9;
+  line-height: 1.55;
 }
+
+.academyCounter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0.8;
+}
+
+/* =========================
+   ACADEMY LIST / ROWS
+   ========================= */
+
+.academyList {
+  display: grid;
+  gap: 14px;
+}
+
+.academyRow {
+  display: grid;
+  grid-template-columns: 1fr 150px 90px;
+  background: #0d0f14;
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+}
+
+.academyCol {
+  display: flex;
+  align-items: center;
+  padding: 18px 16px;
+}
+
+.academyCol--year,
+.academyCol--download {
+  justify-content: center;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Col name */
+.academyIconWrap {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+}
+
+.academyIcon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.academyName {
+  font-size: 16px;
+}
+
+/* Year */
+.academyYear {
+  opacity: 0.9;
+}
+
+/* Download button */
+.academyDownloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  transition: background 160ms ease, opacity 160ms ease;
+  opacity: 0.9;
+}
+
+.academyDownloadBtn:hover {
+  background: rgba(255,255,255,0.06);
+  opacity: 1;
+}
+
+/* Hover fila (tech sutil) */
+.academyRow:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+
+/* =========================
+   VER MAS
+   ========================= */
+
+.academyMoreWrap {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.academyMoreBtn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  transition: opacity 160ms ease;
+}
+
+.academyMoreBtn:hover {
+  opacity: 1;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+  .academyRow {
+    grid-template-columns: 1fr 110px 70px;
+  }
+
+  .academyCounter {
+    position: static;
+    margin-top: 12px;
+  }
+}
+
+
+
+
+
+/* Modales */
+
+.modal-traduction{
+    display: none;
+    flex-direction: column;
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    top: 2.5rem;
+    z-index: 10;
+    background-color: #0b0c11;
+    border: solid 0.5px rgb(100, 100, 100);
+    border-radius: 0 0 0.6rem 0.6rem;
+}
+
+[class^="btn-lang"]{
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+[class^="btn-lang"]:hover {
+  background-color: #101118;
+}
+
+
+
+
+
+.modal-hidden {
+    display: none; 
+}
+
+.modal-show {
+    display: flex; 
+}
+
+
+
+
+.section-heading{    
+    font-size: var(--step-1);
+    font-weight: 500;
+}
+
+.image-terminal-wrapper{
+    display: flex;
+    width: 100%;
+    height: 40rem;
+    position: relative;
+}
+
+.profile-image{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* PANEL 2 */
+
+/* El contenedor de la terminal */
+.glasTerminal {
+    /* Tamaño pequeño como pediste */
+    width: 300px;  
+    height: 180px; 
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+
+    
+    /* El efecto Glassmorphism */
+    background: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+    backdrop-filter: blur(10px);    /* El desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px); /* Para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    
+    /* Comportamiento del texto */
+    padding: 15px;
+    overflow: hidden; /* Oculta lo que se salga */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* El texto empieza abajo */
+    
+    /* Posicionamiento (opcional, depende de tu layout) */
+    /* Puedes usar absolute si quieres que flote sobre la imagen */
+    /* position: absolute; */ 
+    /* bottom: -20px; */
+    /* right: -20px; */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* El estilo de cada línea de código */
+.terminal-line {
+    font-family: 'Courier New', monospace; /* Fuente hacker */
+    font-size: 11px;
+    line-height: 1.4;
+    color: #a0a0a0; /* Color base grisáceo */
+    white-space: nowrap; /* Que no se rompa la línea */
+}
+
+/* Colores para las partes del texto (definidos en el JS) */
+.cmd-verb { color: #61dafb; } /* Azul React */
+.cmd-status { color: #00ff41; font-weight: bold;} /* Verde Matrix */
+.cmd-time { color: #f1c40f; opacity: 0.8;} /* Amarillo */
 
 
 

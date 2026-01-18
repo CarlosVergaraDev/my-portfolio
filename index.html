@@ -11,8 +11,7 @@
     <!-- Google Fonts Revalia-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Revalia&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Revalia&display=swap" rel="stylesheet">
 
     <!-- Google Fonts Outfit-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,37 +19,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Outfit:wght@100..900&family=Revalia&display=swap" rel="stylesheet">
 
 
-    <title>Carlos Vergara</title>
+    <!-- Google Fonts [Lexend, Poppins, Space Mono, ]-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+
+  
+
+
+    <title>Carlos Vergara</title>
 
 </head>
 
 <body>
 
+
+
     <div class="layout-wrapper">
-
-        <div class="nav-mobile">
-
-            <ul>
-                <li><a href="#about"> ABOUT ME </a></li>
-                <li><a href="#experience"> EXPERIENCE </a></li>
-                <li><a href="#projects"> PROJECTS </a></li>
-                <li><a href="#certified">  CERTIFIED </a></li>
-            </ul>
-
-            <i class="fa-solid fa-language"></i>
-
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            
-            <i class="fa-solid fa-bars"></i>
-            
-        </div>
 
         <!-- Columna Izquierda (Fija) -->
         <header class="main-header">
+            
+            <!-- Fila Superior Moble (Fija) -->
+            <div class="nav-icons">
 
+                <svg id="btn-traduction" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m480-80-40-120H160q-33 0-56.5-23.5T80-280v-520q0-33 23.5-56.5T160-880h240l35 120h365q35 0 57.5 22.5T880-680v520q0 33-22.5 56.5T800-80H480ZM286-376q69 0 113.5-44.5T444-536q0-8-.5-14.5T441-564H283v62h89q-8 28-30.5 43.5T287-443q-39 0-67-28t-28-69q0-41 28-69t67-28q18 0 34 6.5t29 19.5l49-47q-21-22-50.5-34T286-704q-67 0-114.5 47.5T124-540q0 69 47.5 116.5T286-376Zm268 20 22-21q-14-17-25.5-33T528-444l26 88Zm50-51q28-33 42.5-63t19.5-47H507l12 42h40q8 15 19 32.5t26 35.5Zm-84 287h280q18 0 29-11.5t11-28.5v-520q0-18-11-29t-29-11H447l47 162h79v-42h41v42h146v41h-51q-10 38-30 74t-47 67l109 107-29 29-108-108-36 37 32 111-80 80Z"/></svg>
 
+                <svg id="btn-mode"  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m389-347 337-337q-11-12-22-23.5T680-729L367-415q4 18 9 34.5t13 33.5Zm338 70q29-35 47-76t23-86L547-189q8 3 16.5 7t16.5 6q44-14 81-40t66-61ZM160-480q0 122 79 211.5T436-163q-72-55-114-137.5T280-480q0-97 42-179.5T436-797q-118 16-197 105.5T160-480Zm317 247 315-314q-4-18-9-35t-13-33L432-278q11 13 21 23.5t24 21.5Zm3 153q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80ZM363-525l247-247q-8-3-14.5-6.5T581-784q-86 28-145.5 97.5T363-525Zm217 45Z"/></svg>
 
+                <div class="modal-traduction" id="modal-traduction"> </div>
+                
+            </div>
 
             <div class="presentation">
                 <h1>Carlos Vergara</h1>
@@ -61,44 +61,41 @@
             <!-- Navegación principal -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#about"><span> ABOUT ME </a></li>
-                    <li><a href="#experience"> <span>EXPERIENCE </a></li>
+                    <li><a href="#about-me"><span> ABOUT ME </a></li>
+                    <li><a href="#skills"> <span>SKILLS </a></li>
                     <li><a href="#projects"> <span>PROJECTS </a></li>
-                    <li><a href="#certified"> <span> CERTIFIED </span></a></li>
+                    <li><a href="#academy"> <span> ACADEMY </span></a></li>
                 </ul>
             </nav>
 
         </header>
 
-
         <!-- Columna Derecha (Scrollable) -->
         <main class="main-content">
 
-            <section id="about">
-                <p><span>👋 Hello!</span> <br> I’m a web developer in training, deeply interested in designing clean, functional, and visually appealing interfaces. I’m currently focused on improving my skills in HTML, CSS, and JavaScript, while preparing to master more advanced tools like React, Node.js, and databases such as MongoDB. <br> I’m passionate about creating practical solutions, learning something new every day, and facing challenges that help me grow both professionally and personally. This portfolio showcases my learning journey, where I will share real projects that reflect my skills and evolution as a developer. </p>
-            </section>
+            <section id="about-me"> </section>
 
-            <section id="experience">
-                <h3>Experience</h3>
-                <p>Currently no work experience in the web development field, but I have personal projects that reflect my growth and commitment to this discipline.</p>
-            </section>
+            <div id="skills"> </div>
 
-            <section id="projects">
-                <h3>Projects</h3>
-                <p>This section showcases a curated selection of projects that reflect my growth as a developer. Each project represents a challenge overcome, a skill acquired, and an opportunity to keep evolving in the world of software development.</p>
-                <div id="containerId"></div>
-            </section>
+            <section id="projects"> </section>
 
-            <section id="certified">
-                <h3>Certified</h3>
-                <p>This section highlights my academic background and the certifications I’ve earned, showcasing both my technical skills and my dedication to lifelong learning.</p>
-            </section>
+            <section id="academy"> </section>
 
         </main>
 
-        <script src="script.js"></script>
-
     </div>
+
+    <script src="https://unpkg.com/i18next/i18next.min.js"></script>
+    <script src="i18n.js"></script>  
+        
+    <script src="interactions.js"></script>  
+    <script src="modal.js"></script>
+
+    <script src="about.js"></script>
+    <script src="skills.js"></script>
+    <script src="projects.js"></script>
+    <script src="academy.js"></script>
+    <script src="main.js"></script>
 
 </body>
 
