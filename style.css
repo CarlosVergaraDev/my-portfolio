@@ -1,234 +1,694 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: 'Outfit', sans-serif;
-    scroll-behavior: smooth;
+  font-size: 62.5%;
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
 }
+
 
 /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,35,1.25,5,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
 :root {
-    --step--3: clamp(0.65rem, calc(0.49rem + 0.82vw), 1.12rem);
-    --step--2: clamp(0.78rem, calc(0.57rem + 1.08vw), 1.40rem);
-    --step--1: clamp(0.94rem, calc(0.65rem + 1.41vw), 1.75rem);
-    --step-0: clamp(1.13rem, calc(0.76rem + 1.85vw), 2.19rem);
-    --step-1: clamp(1.35rem, calc(0.87rem + 2.41vw), 2.73rem);
-    --step-2: clamp(1.62rem, calc(0.99rem + 3.13vw), 3.42rem);
-    --step-3: clamp(1.94rem, calc(1.13rem + 4.05vw), 4.27rem);
-    --step-4: clamp(2.33rem, calc(1.29rem + 5.23vw), 5.34rem);
-    --step-5: clamp(2.80rem, calc(1.45rem + 6.74vw), 6.68rem);
+  /* ========================= TYPOGRAPHY SCALE ========================= */
+  --step--3: clamp(0.65rem, calc(0.49rem + 0.82vw), 1.12rem);
+  --step--2: clamp(0.78rem, calc(0.57rem + 1.08vw), 1.40rem);
+  --step--1: clamp(0.94rem, calc(0.65rem + 1.41vw), 1.75rem);
+  --step-0: clamp(1.13rem, calc(0.76rem + 1.85vw), 2.19rem);
+  --step-1: clamp(1.35rem, calc(0.87rem + 2.41vw), 2.73rem);
+  --step-2: clamp(1.62rem, calc(0.99rem + 3.13vw), 3.42rem);
+  --step-3: clamp(1.94rem, calc(1.13rem + 4.05vw), 4.27rem);
+  --step-4: clamp(2.33rem, calc(1.29rem + 5.23vw), 5.34rem);
+  --step-5: clamp(2.80rem, calc(1.45rem + 6.74vw), 6.68rem);
+
+  /* ========================= DARK THEME BASE ========================= */
+
+  /* ---------- Base background & text ---------- */
+
+  --bg-solid: #000000;                 /* Main page background */
+  --text: rgb(182, 182, 182);          /* Default body text */
+  --text-strong: #e5e7eb;              /* Headings / strong text */
+  --text-muted: #8b93a7;               /* Secondary / helper text */
+
+    /* ---------- Grid background ---------- */
+  --grid-line: rgba(255, 255, 255, 0.01);
+  --grid-size: 30px;
+  --grid-line-thickness: 1px;
+  --grid-gap: 0.5px;
+
+  /* Spotlight color (dark mode) */
+  --spotlight-color: rgba(56, 142, 212, 0.15);
+
+
+  /* Text glow (dark mode) */
+  --glow-text-color: #ffffff;
+  --glow-1: rgba(255, 255, 255, 0.7);
+  --glow-2: rgba(255, 255, 255, 0.3);
+
+
+  /* ---------- Surfaces (cards, panels, inner blocks) ---------- */
+  --surface-1: #0f111a;                /* Cards / panels */
+  --surface-2: #141827;                /* Elevated surfaces */
+  --surface-3: #0b0c11;                /* Inner blocks / code-like blocks */
+
+  /* ---------- Borders & dividers ---------- */
+  --border: rgba(255, 255, 255, 0.08); /* Default border */
+  --divider: rgba(255, 255, 255, 0.06);/* Thin separators */
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.38);
+
+  /* ---------- Links ---------- */
+  --link: #7dd3fc;
+  --link-hover: #bae6fd;
+
+  /* ---------- Accent (buttons, highlights) ---------- */
+  --accent: #7dd3fc;
+  --accent-2: #a78bfa;
+  --accent-contrast: #ffffff;
+
+  /* ---------- Interactive states ---------- */
+  --hover-bg: rgba(255, 255, 255, 0.06);
+  --active-bg: rgba(255, 255, 255, 0.10);
+  --focus-ring: rgba(125, 211, 252, 0.45);
+
+  /* ---------- Tags / Chips ---------- */
+  --tag-bg: rgba(125, 211, 252, 0.12);
+  --tag-text: #bae6fd;
+  --tag-border: rgba(125, 211, 252, 0.35);
+  --tag-hover-bg: rgba(125, 211, 252, 0.18);
+
+  /* ---------- Image Banner ---------- */
+  --profile-image-filter: grayscale(0%) contrast(1.0) brightness(1.5);
+
+  /* Variables de color y estilos base Dark Terminal Glasscard*/
+  --card-bg: rgba(25, 25, 30, 0.4);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --item-bg: rgba(35, 35, 45, 0.5);
+  --item-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #f0f0f0;
+  --text-secondary: #9ca3af;
+  --accent-color: #ff7b29;
+  --badge-bg: rgba(255, 255, 255, 0.06);
+
+
+
+}
+
+/* ========================= LIGHT THEME ========================= */
+html[data-theme="light"] {
+ /* ---------- Base background & text ---------- */
+  --bg-solid: #f8fafc;                 /* Soft off-white */
+  --text: #334155;
+  --text-strong: #0f172a;
+  --text-muted: #64748b;
+
+   /* Spotlight color for light mode */
+  --spotlight-color: rgba(15, 23, 42, 0.08);
+
+  /* Grid lines en light */
+  --grid-line: rgba(2, 6, 23, 0.02);
+
+  /* Invert glow for light mode */
+  --glow-text-color: #0f172a;
+
+  /* ---------- Surfaces ---------- */
+  --surface-1: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-3: #eef2f7;
+
+  /* ---------- Borders & dividers ---------- */
+  --border: rgba(2, 6, 23, 0.10);
+  --divider: rgba(2, 6, 23, 0.08);
+
+
+  /* ---------- Links ---------- */
+  --link: #0369a1;
+  --link-hover: #0284c7;
+
+  /* ---------- Accent ---------- */
+  --accent: #0284c7;
+  --accent-2: #7c3aed;
+  --accent-contrast: #081018;
+
+  /* ---------- Interactive states ---------- */
+  --hover-bg: rgba(2, 6, 23, 0.05);
+  --active-bg: rgba(2, 6, 23, 0.08);
+  --focus-ring: rgba(2, 132, 199, 0.35);
+
+  /* ---------- Tags ---------- */
+  --tag-bg: rgba(2, 132, 199, 0.10);
+  --tag-text: #075985;
+  --tag-border: rgba(2, 132, 199, 0.35);
+  --tag-hover-bg: rgba(2, 132, 199, 0.16);
+
+  /* ---------- Image Banner ---------- */
+  --profile-image-filter: grayscale(100%) contrast(1.0) brightness(1.8);
+
 }
 
 body{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #0b0c11;
-    color: rgb(182, 182, 182);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-solid);
+  background-image:
+  linear-gradient(var(--grid-line) var(--grid-line-thickness), transparent var(--grid-gap)),
+  linear-gradient(90deg, var(--grid-line) var(--grid-line-thickness), transparent var(--grid-gap));
+  background-size: var(--grid-size) var(--grid-size);
+  color: var(--text);
+  transition: background-color 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-
 
 /* La capa que crea el efecto de luz */
 body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-      
-    /* Esto es CRÍTICO: permite hacer clic a través de la capa */
-    pointer-events: none; 
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+    
+  /* Esto es CRÍTICO: permite hacer clic a través de la capa */
+  pointer-events: none; 
 
-    /* El gradiente que sigue al mouse usando variables CSS */
-    background: radial-gradient(
-    circle 30rem at var(--spotlight-x) var(--spotlight-y), rgba(56, 142, 212, 0.15),
-        transparent 80%
-    );
+  /* El gradiente que sigue al mouse usando variables CSS */
+  background: radial-gradient(
+  circle 30rem at var(--spotlight-x) var(--spotlight-y), var(--spotlight-color),
+    transparent 80%
+  );
 }
 
 h1 {
-   font-family: "Space Grotesk", sans-serif;
-   font-weight: 500;
-   font-size: var(--step-2); /* Hacemos el título responsive */
+  
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: var(--step-2); /* Hacemos el título responsive */
+}
+
+.my-name{
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: var(--step-4); /* Hacemos el título responsive */
+  white-space: nowrap;
+  color: var(--glow-text-color);
+  text-shadow:
+    0 0 5px var(--glow-1),
+    0 0 15px var(--glow-2);
 }
 
 h2 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-size: var(--step-1);
-    margin-top: 1rem;
-    font-weight: 500;
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: var(--step-1);
+  margin-top: 1rem;
+  font-weight: 500;
 }
 
 h3 {
-    font-size: var(--step-0);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: rgb(255, 255, 255);
+  font-size: var(--step-0);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text);
 }
 
 p {
-    font-family:  "Space Grotesk", sans-serif;
-    font-size: var(--step--2);
-    font-weight: 200;
-    line-height: 1.8;
-    color: rgb(224, 224, 224);
-    
+  font-family:  "Space Grotesk", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text);
 }
 
 .nav-icons{
-    display: flex;
-    width: 100%;
-    height: max-content;
-    position: relative;
-    top: 0;
-    z-index: 10;
-    justify-content: flex-start;
+  display: flex;
+  width: max-content;
+  height: max-content;
+  position: fixed;
+  top: 0;
+  margin: 2rem 2rem 0 0;
+  z-index: 0;
+  align-self: flex-end;
 }
 
 .nav-icons >svg{
-    color: rgb(255, 255, 255);
-    margin: auto 1.5rem;
-    cursor: pointer;
+  width: 3.5rem;
+  height: 3.5rem;
+  fill:var(--text);
+  margin: auto 1.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
 }
 
 .nav-icons svg:hover{
-    fill:#ff6464
+  fill:#8a8a8a;
+ 
 }
 
 .nav-icons >svg:nth-child(2){
-    margin-right: 5%;
+  margin-right: 5%;
 }
 
+/* --- Modal Traduccion  --- */
+.modal-traduction {
+  position: absolute;
+  top: 100%; /* Se posiciona justo debajo del borde azul */
+  left: -1.5rem;
+  margin-top: 1.2rem; /* Separación del botón */
+  color: var(--text); 
+  width: max-content;
+  
+  /* Estado inicial */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  display: flex;
+}
+
+.modal-traduction.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  background-color: var(--surface-2); 
+  border: solid 1px var(--border);
+  animation: dropdownFadeSlide 500ms ease-out forwards;
+  transform-origin: top;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+
+
+
+.option {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1.6rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+  background-color: var(--surface-2); 
+}
+
+.option:first-child {
+ border-bottom: 1px solid var(--divider);
+}
+.option:last-child {
+ border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.option:hover {
+  background-color: var(--hover-bg);
+}
 
 
 
 
 /* --- Layout 2 Columnas --- */
 .layout-wrapper {
-    display: flex;
-    max-width: 1440px;
-    margin: 0 auto;
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .main-header {
-    width: 45%; /* Columna izquierda ocupa el 45% */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    position: sticky; /* ¡CLAVE! Se queda fija al hacer scroll */
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 10vh 5vw;
+  width: 45%; /* Columna izquierda ocupa el 45% */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  position: sticky; /* ¡CLAVE! Se queda fija al hacer scroll */
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 5vw;
 }
 
 .presentation{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-
-
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+};
 
 
 /* --- Area NavBar --- */
 
 .main-nav{
-    margin-top: 20%;
-    height: max-content;
+  margin-top: 20%;
+  height: max-content;
 }
 
 .main-nav ul {
-    list-style: none; /* Quitamos los puntos de la lista */
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
+  list-style: none; /* Quitamos los puntos de la lista */
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-top: 5rem;
 }
 
 .main-nav li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .main-nav a {
-    text-decoration: none;
-    color: rgb(230, 230, 230);
-    font-weight: 300;
-    font-size: var(--step--3);
-    display: flex; /* Importante para las animaciones */
-    transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  display: flex; /* Importante para las animaciones */
+  transition: all 0.3s ease;
 }
-
 
 /* --- Efecto Brackets NavBar --- */
 .main-nav a span {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Creamos los corchetes con pseudo-elementos */
 .main-nav a::before,
 .main-nav a::after {
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 800;
-    color: #ff6464;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 1200;
+  color: #ff6464;
 }
 
 .main-nav a::before {
-    content: '[';
-    transform: translateX(-10px); /* Empieza desplazado a la izquierda */
+  content: '[';
+  transform: translateX(-10px); /* Empieza desplazado a la izquierda */
 }
 
 .main-nav a::after {
-    content: ']';
-    transform: translateX(10px); /* Empieza desplazado a la derecha */
+  content: ']';
+  transform: translateX(10px); /* Empieza desplazado a la derecha */
 }
 
 /* En el hover, mostramos los corchetes y movemos el texto */
 .main-nav a:hover::before,
 .main-nav a:hover::after {
-    opacity: 1;
-    transform: translateX(1);
+  opacity: 1;
+  transform: translateX(1);
 }
 
 .main-nav a:hover span {
-    transform: translateX(8px); /* Movemos un poco el texto para que no se pegue */
+  transform: translateX(8px); /* Movemos un poco el texto para que no se pegue */
 }
 
 
-
+header{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
 
 .main-content{
-
-    display: flex;
-    flex-direction: column;
-    width: 55%; /* Columna derecha ocupa el 55% */
-    padding: 10vh 5vw;
-    row-gap: 1.5rem;
-
+  display: flex;
+  flex-direction: column;
+  width: 55%; /* Columna derecha ocupa el 55% */
+  padding: 10vh 5vw;
+  row-gap: 1.5rem;
 }
 
 section {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 
-.section-info{
+.section-about{
+ display: flex;
+ flex-direction: column;
+ justify-content: end;
+ width: auto;
+ height: max-content;
+ padding-top: 2rem;
+}
+
+
+.info-about{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+
+
+/*.terminal-profile-frame{
+  width: 50%;
+  height: 50rem;
+  background-image: url('https://i.ibb.co/5mRNFs4/imgcv.png');
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  filter: var(--profile-image-filter);
+  position:absolute;
+  bottom: 0;
+  left: 0rem;
+  z-index: 10;
+ 
+  transition: filter 0.3s ease;
+}*/
+
+
+
+
+
+/* Contenedor principal con efecto Glassmorphism */
+       /* * ESTILOS AISLADOS PARA LA GLASS CARD
+         * Solo afectan a la tarjeta y sus elementos internos
+         */
+.glass-card, .glass-card * {
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.glass-card {
+    width: 100%;
+    min-width: 100%;
+    height: 40rem;
+    /* Se remueve el margin: auto para que fluya con tu layout flex */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 20px;
+    transition: height 0.3s ease;
 }
+
+/* Cabecera de la tarjeta */
+.glass-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.glass-card .header-left {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.glass-card .title-container h2 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.glass-card .title-container p {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Punto de estado activo (Verde fosforescente parpadeante) */
+.glass-card .status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #39ff14;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #39ff14;
+    animation: neonPulse 1.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+    from { opacity: 0.6; box-shadow: 0 0 4px #39ff14; }
+    to { opacity: 1; box-shadow: 0 0 12px #39ff14, 0 0 20px rgba(57, 255, 20, 0.6); }
+}
+
+/* Contenedor circular para la imagen de perfil */
+.glass-card .profile-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card .profile-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Insignia de confiabilidad (DevOps Cycle) */
+.glass-card .reliability-badge {
+    background: var(--badge-bg);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid var(--card-border);
+    min-width: 60px; 
+    text-align: left;
+}
+
+/* Ventana donde ocurre la animación */
+.glass-card .logs-window {
+  flex: 1; /* Automáticamente toma todo el espacio restante disponible */
+  min-height: 0; /* Asegura que flexbox respete el límite en monitores pequeños */
+  overflow: hidden;
+  position: relative;
+  /* Usamos valores fijos en px (30px) para que el difuminado se mantenga perfecto a cualquier altura */
+  mask-image: linear-gradient(to bottom, transparent 0px, black 30px, black calc(100% - 30px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 30px, black calc(100% - 30px), transparent 100%);
+}
+
+.glass-card .logs-track {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Estilo de cada elemento de log */
+.glass-card .log-item {
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.glass-card .log-item:hover {
+    background: rgba(45, 45, 55, 0.6);
+}
+
+.glass-card .log-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.glass-card .log-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* Cursor parpadeante para el efecto Typewriter */
+.glass-card .type-cursor {
+    display: inline-block;
+    width: 6px;
+    height: 12px;
+    background-color: var(--accent-color);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+        /* Media Queries ajustados */
+  @media (max-width: 480px) {
+    .glass-card {
+      padding: 20px 16px;
+      width: 100%;
+    }
+
+    .glass-card .card-header {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .glass-card .header-left {
+      width: 100%;
+    }
+
+    .glass-card .reliability-badge {
+      align-self: flex-start;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -236,45 +696,103 @@ section {
 /* Skills */
 
 .skillCategory{
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8rem;
 }
 
 .skillCategory__label{
-    font-family: 'Roboto Mono', monospace;
-    font-size: var(--step--3);
-    color: #a0a0a0;
-    font-weight: 400;
-    justify-self: flex-end;
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--step--3);
+  color: var(--accent-contrast);
+  font-weight: 00;
+  justify-self: flex-end;
+  margin-top: 1rem;
+  max-width: max-content;
+
 }
 
 .chipWrap{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  
 }
 
 .chip{
-    padding: 0.4rem 0.8rem;
-    background-color: #1e1f26; /* Color de fondo oscuro */
-    color: #b6b6b6; /* Color del texto */
-    border-radius: 0.2rem;
-    font-size: var(--step--2);
-    font-weight: 300;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 0.2rem;
+  border : 1px solid var(--tag-border);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.chip:hover{
+  background-color: var(--tag-hover-bg);
+  border: 1px solid var(--tag-border) ;
 }
 
 
 
+/* =============== CTA Ver más / Ver menos ================= */
 
-/* Projects */
+.skillCategory__moreWrap{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo base compartido */
+.skillCategory__more{
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--step--3);
+  color: var(--link);
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 0.85;
+}
+
+
+.skillCategory__more.is-less{
+  /* opcional: por ejemplo un poco más tenue */
+  opacity: 0.75;
+}
+
+/* Hover común */
+.skillCategory__more:hover{
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+
+}
+
+/* ========================= Acordeón suave  ========================= */
+
+
+.skillsAccordion{
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 700ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+/* Estado abierto */
+.skillsAccordion.is-open{
+  max-height: 2000px; /* holgado para que nunca “tope” */
+}
+
 
 
 /* ===== Projects ===== */
-
-/* =========================
-   Grid responsive
-   ========================= */
 
 .projectsGrid {
   display: grid;
@@ -282,28 +800,22 @@ section {
   gap: 28px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .projectsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
-   Card base
-   ========================= */
+/* ========================= Card base ========================= */
 
 .projectCard {
   position: relative; /* clave para posicionar la info absoluta */
-  background: #0d0f14;
-  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   overflow: hidden;
   cursor: pointer;
 }
 
-/* =========================
-   Imagen
-   ========================= */
+.projectCard:hover{
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 220ms ease;
+}
+
+/* ========================= Imagen ========================= */
 
 .projectCardImage {
   position: relative;
@@ -320,9 +832,7 @@ section {
   transition: opacity 180ms ease;
 }
 
-/* =========================
-   Info box (papel en sobre)
-   ========================= */
+/* ========================= Info box (papel en sobre) ========================= */
 
 .projectCardInfo {
   position: absolute;     /* fuera del flujo */
@@ -333,30 +843,28 @@ section {
   height: 72px;           /* estado cerrado */
   padding: 20px;
   text-align: center;
-
-  background: #0d0f14;
+  background:  var(--surface-3);
   overflow: hidden;       /* oculta lo que “sale” */
-
   transition: height 220ms ease;
 }
 
-/* =========================
-   Texto
-   ========================= */
+
+/* ========================= Texto ========================= */
 
 .projectCardTitle {
-  font-size: 1.8rem;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text-strong);
+  font-size: 1.4rem;
   margin-bottom: 6px;
 }
 
 .projectCardYear {
-  font-size: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
   opacity: 0.7;
 }
 
-/* =========================
-   Hover effect
-   ========================= */
+/* ========================= Hover effect ========================= */
 
 .projectCard:hover .projectCardImage img {
   opacity: 0.75;
@@ -371,13 +879,11 @@ section {
 
 /* Contenedor del botón "ver más" */
 .projectsMoreWrap {
-
   display: flex;
   justify-content: center;
 }
 
-/* Botón "ver más"
-   Es el elemento clickeable que abre la modal con todos los proyectos */
+/* Botón "ver más" Es el elemento clickeable que abre la modal con todos los proyectos */
 .projectsMoreBtn {
   background: transparent;
   border: none;
@@ -390,21 +896,13 @@ section {
   transition: opacity 160ms ease;
 }
 
-/* Estado hover del botón "ver más"
-   Indica interactividad al pasar el cursor */
+/* Estado hover del botón "ver más" Indica interactividad al pasar el cursor */
 .projectsMoreBtn:hover {
   opacity: 1;
 }
 
 
-
-
-
-/* Academy */
-
-/* =========================
-   ACADEMY HEADER
-   ========================= */
+/* ========================= ACADEMY HEADER  ========================= */
 
 .academyHeader {
   position: relative;
@@ -430,39 +928,37 @@ section {
   opacity: 0.8;
 }
 
-/* =========================
-   ACADEMY LIST / ROWS
-   ========================= */
+
+
+/* ========================= ACADEMY LIST / ROWS ========================= */
 
 .academyList {
   display: grid;
-  gap: 14px;
 }
 
 .academyRow {
   display: grid;
   grid-template-columns: 1fr 150px 90px;
-  background: #0d0f14;
-  border: 1px solid rgba(255,255,255,0.06);
-  cursor: pointer;
+  background: var(--surface-2);
+  border-bottom: 0.2px solid var(--border);
 }
 
 .academyCol {
   display: flex;
   align-items: center;
-  padding: 18px 16px;
+  padding: 1rem;
 }
 
 .academyCol--year,
 .academyCol--download {
   justify-content: center;
-  border-left: 1px solid rgba(255,255,255,0.08);
+
 }
 
 /* Col name */
 .academyIconWrap {
-  width: 44px;
-  height: 44px;
+  width: 4rem;
+  height: 4rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -470,18 +966,22 @@ section {
 }
 
 .academyIcon {
-  width: 38px;
-  height: 38px;
+  width: 3rem;
+  height: 3rem;
   object-fit: contain;
 }
 
 .academyName {
-  font-size: 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: var(--step--2);
+  text-wrap: nowrap;
 }
 
 /* Year */
 .academyYear {
   opacity: 0.9;
+  font-size: var(--step--2);
 }
 
 /* Download button */
@@ -489,12 +989,11 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 4rem;
+  height: 4rem;
   text-decoration: none;
   color: inherit;
   border-radius: 10px;
-  transition: background 160ms ease, opacity 160ms ease;
   opacity: 0.9;
 }
 
@@ -503,14 +1002,9 @@ section {
   opacity: 1;
 }
 
-/* Hover fila (tech sutil) */
-.academyRow:hover {
-  border-color: rgba(255,255,255,0.14);
-}
 
-/* =========================
-   VER MAS
-   ========================= */
+
+/* ========================= VER MAS ========================= */
 
 .academyMoreWrap {
   margin-top: 36px;
@@ -532,26 +1026,8 @@ section {
   opacity: 1;
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
 
-@media (max-width: 768px) {
-  .academyRow {
-    grid-template-columns: 1fr 110px 70px;
-  }
-
-  .academyCounter {
-    position: static;
-    margin-top: 12px;
-  }
-}
-
-
-
-
-
-/* Modales */
+/* dropdown bt Traductor */
 
 .modal-traduction{
     display: none;
@@ -575,10 +1051,6 @@ section {
   background-color: #101118;
 }
 
-
-
-
-
 .modal-hidden {
     display: none; 
 }
@@ -587,24 +1059,15 @@ section {
     display: flex; 
 }
 
-
-
-
 .section-heading{    
     font-size: var(--step-1);
     font-weight: 500;
 }
 
-.image-terminal-wrapper{
-    display: flex;
-    width: 100%;
-    height: 40rem;
-    position: relative;
-}
-
-.profile-image{
-    max-width: 100%;
-    height: auto;
+.academyDownloadBtn svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
 }
 
 
@@ -615,59 +1078,618 @@ section {
 
 
 
+/* =========================================================
+   UI MANAGER – GLOBAL SIDE MODAL (CSS BASE)
+   ---------------------------------------------------------
+   RESPONSABILIDAD:
+   - Overlay oscuro
+   - Panel lateral deslizante
+   - Header + body
+   - Bloqueo de scroll del body
+   ========================================================= */
 
-
-/* PANEL 2 */
-
-/* El contenedor de la terminal */
-.glasTerminal {
-    /* Tamaño pequeño como pediste */
-    width: 300px;  
-    height: 180px; 
-    position: absolute;
-    bottom: 2rem;
-    right: 0;
-
-    
-    /* El efecto Glassmorphism */
-    background: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
-    backdrop-filter: blur(10px);    /* El desenfoque del fondo */
-    -webkit-backdrop-filter: blur(10px); /* Para Safari */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    
-    /* Comportamiento del texto */
-    padding: 15px;
-    overflow: hidden; /* Oculta lo que se salga */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* El texto empieza abajo */
-    
-    /* Posicionamiento (opcional, depende de tu layout) */
-    /* Puedes usar absolute si quieres que flote sobre la imagen */
-    /* position: absolute; */ 
-    /* bottom: -20px; */
-    /* right: -20px; */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+/* ======================= Scroll lock del body  ======================= */
+.uiModalLock {
+  overflow: hidden;
 }
 
-/* El estilo de cada línea de código */
-.terminal-line {
-    font-family: 'Courier New', monospace; /* Fuente hacker */
-    font-size: 11px;
-    line-height: 1.4;
-    color: #a0a0a0; /* Color base grisáceo */
-    white-space: nowrap; /* Que no se rompa la línea */
+/* ========================= Root de la modal ========================= */
+.uiSideModal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none; /* se activa solo cuando está abierta */
 }
 
-/* Colores para las partes del texto (definidos en el JS) */
-.cmd-verb { color: #61dafb; } /* Azul React */
-.cmd-status { color: #00ff41; font-weight: bold;} /* Verde Matrix */
-.cmd-time { color: #f1c40f; opacity: 0.8;} /* Amarillo */
+.uiSideModal.isOpen {
+  pointer-events: auto;
+}
+
+/* ========================= Overlay ========================= */
+.uiSideModalOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.uiSideModal.isOpen .uiSideModalOverlay {
+  opacity: 1;
+}
+
+/* ================  Panel lateral  ==================== */
+.uiSideModalPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(520px, 92vw);
+  background: var(--surface-1);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 240ms ease;
+}
+
+.uiSideModal.isOpen .uiSideModalPanel {
+  transform: translateX(0);
+}
+
+/* ===================  Header ====================== */
+.uiSideModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.uiSideModalTitle {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  color: var(--text-strong);
+}
+
+.uiSideModalClose {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 160ms ease;
+}
+
+.uiSideModalClose:hover {
+  opacity: 1;
+}
+
+/* =================== Body ================== */
+.uiSideModalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
 
 
 
-/* Responsive ajustes extra */
+
+
+
+/* =========================================================
+   PROJECT DETAIL (v4)
+   - Sin iconos
+   - Links al final en flex
+   ========================================================= */
+
+.pdRoot {
+  display: grid;
+  gap: 12px;
+}
+
+/* Hero */
+.pdHero {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* =========================
+   HEADER ROW
+   - Título (izq)
+   - TYPE | YEAR | (der)
+   ========================= */
+.pdHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.pdTitleWrap {
+  min-width: 0; /* permite ellipsis */
+}
+
+.pdTitle {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3rem;
+  color: var(--text-strong);
+  line-height: 1.1;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Meta inline derecha */
+.pdMetaInline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.pdTypeText,
+.pdYearText {
+  font-family: "Space Grotesk", sans-serif; 
+}
+
+.pdSep {
+  opacity: 0.65;
+}
+
+/* =========================
+   VERSION ROW
+   ========================= */
+.pdVersionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.pdVersionWrap {
+  display: flex;
+  align-items: center;
+}
+
+.pdVersion {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Description */
+.pdDesc {
+  margin-top: 0.5rem;
+  line-height: 1.8;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* Chips */
+.pdChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pdChip {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+
+  padding: 6px 12px;
+  border-radius: 0.2rem;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+}
+
+/* =========================
+   LINKS ROW (Readme.md | https://www...)
+   ========================= */
+.pdLinksRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 2rem;
+
+  margin-top: 2rem;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  color: var(--accent-contrast);
+}
+
+.pdLink {
+  color: var(--link);
+  transition: opacity 160ms ease;
+}
+
+.pdLink:hover {
+  
+  text-decoration: underline;
+}
+
+.pdLinkSep {
+  opacity: 0.7;
+}
+
+/* Empty */
+.pdEmpty {
+  opacity: 0.7;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PROJECTS ALL (modal) – v2 fixes
+   - No cambia tus clases pd*
+   - Solo ajustes pa* necesarios
+   ========================================================= */
+
+.paRoot {
+  display: grid;
+  gap: 1.2rem;
+ 
+}
+
+/* =========================
+   FILTER
+   ========================= */
+.paFilter {
+  position: relative;
+}
+
+.paFilterBar {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.paFilterBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.paFilterIcon {
+  fill: var(--text-strong);
+  opacity: 0.9;
+}
+
+/* Chips superiores (si no hay filtro -> todos; si hay filtro -> sin los seleccionados) */
+.paChipsTop {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+}
+
+.paTopChip {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-contrast);
+  opacity: 0.3;
+}
+
+/* Dropdown */
+.paDropdown {
+  position: absolute;
+  top: calc(42px + 10px);
+  left: 0;
+
+  width: min(280px, 86vw);
+
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-md);
+  padding: 10px;
+  z-index: 2;
+}
+
+.paDropdownScroll {
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar discreto */
+.paDropdownScroll::-webkit-scrollbar {
+  width: 8px;
+}
+.paDropdownScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.paDropdownScroll::-webkit-scrollbar-thumb {
+  background: rgba(127, 127, 127, 0.35);
+  border-radius: 999px;
+}
+.paDropdownScroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(127, 127, 127, 0.55);
+}
+.paDropdownScroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(127, 127, 127, 0.45) transparent;
+}
+
+/* Checkbox */
+.paCheck {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+.paCheck input {
+  width: 16px;
+  height: 16px;
+}
+
+.paCheckText {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* =========================
+   LIST
+   ========================= */
+.paList {
+  display: grid;
+  gap: 1.6rem;
+
+}
+
+/* FIX #1: NO pointer, NO hover effects */
+.paProject {
+  display: grid;
+  margin-top: 3rem;
+  row-gap: 2rem;
+  cursor: default;
+
+}
+
+/* Si tienes estilos globales para div:hover, esto ayuda a neutralizar */
+.paProject:hover {
+  box-shadow: none;
+}
+
+/* Título un poco menor en list */
+.paTitleSm {
+  font-size: 2.4rem;
+}
+
+/* Imagen menor en list */
+.paHero {
+  height: 200px;
+}
+
+/* Meta derecha: que quede alineada al extremo */
+.paMetaRight {
+  justify-content: flex-end;
+}
+
+/* Versión debajo del header  */
+.paVersionOnlyRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+
+/* Divider */
+.paDivider {
+  margin-top: 2rem;
+  height: 1px;
+  width: 100%;
+  background: var(--border);  
+}
+
+.paEmpty {
+  font-family: "Space Grotesk", sans-serif;
+  opacity: 0.7;
+  font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   MODAL ACADEMY
+========================================================= */
+
+.acRoot {
+  display: grid;
+  gap: 2.2rem;
+}
+
+/* Card */
+.acCard {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Hero */
+.acHero {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Header */
+.acHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.4rem 0;
+}
+
+.acAvatarWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acAvatar {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Title */
+.acTitleWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.acTitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.acYear {
+  font-size: 1.2rem;
+  opacity: 0.75;
+}
+
+/* Meta */
+.acMetaRow {
+  padding: 0.6rem 1.4rem;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.acMeta {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.acSep {
+  opacity: 0.6;
+}
+
+/* Download */
+.acDownloadBtn {
+  margin: 1rem 1.4rem 1.4rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--link);
+
+  transition: background 160ms ease, opacity 160ms ease;
+}
+
+.acDownloadBtn:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================= RESPONSIVE ========================= */ 
+
 @media (max-width: 900px) {
 
     .layout-wrapper {
@@ -707,8 +1729,45 @@ section {
     }
 }
 
+@media (max-width: 768px) {
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .academyRow {
+    grid-template-columns: 1fr 110px 70px;
+  }
+
+  .academyCounter {
+    position: static;
+    margin-top: 12px;
+  }
+
+  .nav-icons{
+    display: none;
+  }
+}
+
+/* Animación DropDown Traduccion*/
+@keyframes dropdownFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
+/* Animación para textos traducibles i18n.js*/
+.i18n-animate {
+  animation: i18nFadeUp 220ms ease-out both;
+}
 
-
-
+@keyframes i18nFadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

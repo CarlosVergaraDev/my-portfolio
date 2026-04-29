@@ -5,18 +5,33 @@
 var academyData = [
   {
     key: "devops-avanzado-1",
-    image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",                 /* icono pequeño por fila (puede ser url o svg) */
+    image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
     name: "DevOps Avanzado",
     year: "2025",
-    downloadUrl: "#",           /* link directo (Drive o cualquier URL) */
+    downloadUrl: "https://static.platzi.com/media/user_upload/diploma_superarex-d1e20eb7-1e10-4e7e-94d9-82dd1b6103fc.jpg",
     meta: {
-      imageGral: "#",           /* imagen grande para modal (placeholder) */
-      tipoEstudio: "Curso",     /* Curso / Diplomado / Pregrado / etc */
-      instituto: "Platzi",      /* nombre de la institución */
-      categoria: "DevOps"       /* DevOps / Frontend / Backend / etc */
+      imageGral: "https://static.platzi.com/media/user_upload/diploma_superarex-d1e20eb7-1e10-4e7e-94d9-82dd1b6103fc.jpg",
+      tipoEstudio: "Curso",
+      instituto: "Platzi",
+      categoria: "DevOps"
     }
   },
   {
+    key: "devops-avanzado-2",
+    image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
+    name: "DevOps Avanzado",
+    year: "2025",
+    downloadUrl: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
+    name: "DevOps Avanzado",
+    meta: {
+      imageGral: "https://static.platzi.com/media/user_upload/diploma_superarex-d1e20eb7-1e10-4e7e-94d9-82dd1b6103fc.jpg",
+    name: "DevOps Avanzado",
+      tipoEstudio: "Curso",
+      instituto: "Platzi",
+      categoria: "DevOps"
+    }
+  },
+    {
     key: "devops-avanzado-2",
     image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
     name: "DevOps Avanzado",
@@ -29,21 +44,8 @@ var academyData = [
       categoria: "DevOps"
     }
   },
-  {
-    key: "devops-avanzado-3",
-    image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
-    name: "DevOps Avanzado",
-    year: "2025",
-    downloadUrl: "#",
-    meta: {
-      imageGral: "#",
-      tipoEstudio: "Curso",
-      instituto: "Platzi",
-      categoria: "DevOps"
-    }
-  },
-  {
-    key: "devops-avanzado-4",
+    {
+    key: "devops-avanzado-2",
     image: "https://static.platzi.com/media/achievements/platzi-bd-637c6756-cfaf-4480-875a-691537903e1d.webp",
     name: "DevOps Avanzado",
     year: "2025",
@@ -60,7 +62,6 @@ var academyData = [
 
 /* =========================
    ACADEMY SECTION
-   - Modal se conecta luego en modal.js
    ========================= */
 
 class AcademySection {
@@ -78,7 +79,7 @@ class AcademySection {
 
     this.container.innerHTML = "";
 
-    /* Header superior: título + descripción + contador */
+    /* Header */
     var header = document.createElement("div");
     header.className = "academyHeader";
 
@@ -88,7 +89,8 @@ class AcademySection {
 
     var desc = document.createElement("p");
     desc.className = "academyDesc";
-    desc.textContent = "Lorem ipsum dolor sit amet consectetur. Est mauris dolor vivamus vitae et nullam.";
+    desc.textContent =
+      "Technical certifications obtained during my software development training journey.";
 
     var counter = document.createElement("div");
     counter.className = "academyCounter";
@@ -98,15 +100,15 @@ class AcademySection {
     header.appendChild(desc);
     header.appendChild(counter);
 
-    /* Lista / tabla */
+    /* List */
     var list = document.createElement("div");
     list.className = "academyList";
 
-    for (var i = 0; i < this.data.length; i = i + 1) {
+    for (var i = 0; i < this.data.length; i++) {
       list.appendChild(this.buildRow(this.data[i]));
     }
 
-    /* Ver más (abre modal general) */
+    /* Ver más */
     var moreWrap = document.createElement("div");
     moreWrap.className = "academyMoreWrap";
 
@@ -115,25 +117,36 @@ class AcademySection {
     moreBtn.type = "button";
     moreBtn.textContent = "ver mas";
 
+    // Abre modal-academy.js
     moreBtn.addEventListener("click", function () {
-      var ev = new CustomEvent("academy:openAll", { detail: this.data });
-      window.dispatchEvent(ev);
-    }.bind(this));
+      window.dispatchEvent(
+        new CustomEvent("ui:open", {
+          detail: {
+            type: "academy.all",
+            payload: academyData
+          }
+        })
+      );
+    });
+
 
     moreWrap.appendChild(moreBtn);
 
-    /* Render final */
+    /* Render */
     this.container.appendChild(header);
     this.container.appendChild(list);
     this.container.appendChild(moreWrap);
   }
 
+  /* =========================
+     BUILD ROW
+  ========================= */
   buildRow(item) {
     var row = document.createElement("div");
     row.className = "academyRow";
     row.setAttribute("data-key", item.key);
 
-    /* Col 1: icon + name */
+    /* Col name */
     var colName = document.createElement("div");
     colName.className = "academyCol academyCol--name";
 
@@ -154,7 +167,7 @@ class AcademySection {
     colName.appendChild(iconWrap);
     colName.appendChild(name);
 
-    /* Col 2: year */
+    /* Col year */
     var colYear = document.createElement("div");
     colYear.className = "academyCol academyCol--year";
 
@@ -164,7 +177,7 @@ class AcademySection {
 
     colYear.appendChild(year);
 
-    /* Col 3: download button */
+    /* Col download */
     var colDownload = document.createElement("div");
     colDownload.className = "academyCol academyCol--download";
 
@@ -175,23 +188,22 @@ class AcademySection {
     downloadLink.rel = "noopener noreferrer";
     downloadLink.setAttribute("aria-label", "Descargar certificado");
 
-    /* Ícono (puedes reemplazar por SVG si quieres) */
-    downloadLink.innerHTML = "&#x2B07;";
+    // SVG insertado por JS
+    downloadLink.appendChild(buildDownloadSvg());
 
     colDownload.appendChild(downloadLink);
 
-    /* Click row -> modal individual (para después) */
+    /* Click row -> modal individual */
     row.addEventListener("click", function () {
       var ev = new CustomEvent("academy:open", { detail: item });
       window.dispatchEvent(ev);
     });
 
-    /* Evita que click en descarga dispare el click del row */
+    /* Evita burbujeo */
     downloadLink.addEventListener("click", function (e) {
       e.stopPropagation();
     });
 
-    /* Armar fila */
     row.appendChild(colName);
     row.appendChild(colYear);
     row.appendChild(colDownload);
@@ -202,8 +214,32 @@ class AcademySection {
 
 
 /* =========================
+   SVG DOWNLOAD
+========================= */
+
+function buildDownloadSvg() {
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svg.setAttribute("height", "24px");
+  svg.setAttribute("width", "24px");
+  svg.setAttribute("viewBox", "0 -960 960 960");
+  svg.setAttribute("fill", "currentColor");
+  svg.setAttribute("aria-hidden", "true");
+
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute(
+    "d",
+    "M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"
+  );
+
+  svg.appendChild(path);
+  return svg;
+}
+
+
+/* =========================
    INIT
-   ========================= */
+========================= */
 
 document.addEventListener("DOMContentLoaded", function () {
   var academy = new AcademySection("academy", academyData);
